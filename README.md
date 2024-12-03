@@ -7,60 +7,106 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# INDIVIDUAL PROJECT 3: Hospital Digitalization System
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Muh. Naufal Fahri Salim**
+**H071231031**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Overview:
+Sistem digitalisasi rumah sakit ini dirancang untuk mengelola operasional rumah sakit dengan lebih efisien melalui peran Admin, Dokter, dan Pasien. Admin memiliki akses penuh untuk mengelola pengguna, data obat, jadwal, dan laporan operasional. Dokter dapat mengakses dan memperbarui rekam medis pasien, memberikan diagnosis, menuliskan resep, serta mengatur jadwal konsultasi. Pasien dapat melihat jadwal konsultasi, mengakses riwayat rekam medis, serta memeriksa status resep dan riwayat perawatan. Sistem ini dilengkapi dengan modul CMS yang komprehensif untuk mengelola pengguna, obat, dan rekam medis, serta dilengkapi dengan fitur tambahan seperti penjadwalan konsultasi dan sistem umpan balik untuk meningkatkan kualitas layanan rumah sakit.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## User Levels:
+### 1. Admin
+Memiliki akses penuh untuk mengelola seluruh modul dan pengguna. Admin bertanggung jawab atas pengaturan data rumah sakit, seperti manajemen pengguna (Dokter dan Pasien), pengelolaan jadwal, serta laporan operasional.
 
-## Learning Laravel
+### 2. Dokter
+Mengakses dan memperbarui rekam medis pasien, memberikan diagnosa, dan menuliskan resep obat. Dokter juga dapat melihat dan mengatur jadwal konsultasi dengan pasien.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 3. Pasien
+Mendaftar dan mengakses informasi layanan rumah sakit, seperti jadwal konsultasi dan hasil rekam medis. Pasien juga dapat melihat status resep dan riwayat perawatan.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## CMS Modules (Content Management System):
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. User Management (Admin)
+- **List Users:** Menampilkan seluruh pengguna (Admin, Dokter, dan Pasien) yang terdaftar di sistem.
+- **Create User:**  
+  Fields: Username, email, password, role (Admin, Dokter, Pasien).  
+  Validation: Semua field wajib diisi dan peran pengguna harus dipilih dengan benar.
+- **Edit User:**  
+  Fields yang dapat diubah: Username, email, password, role.  
+  Validation: Validasi dilakukan agar tidak ada field kosong dan data sesuai format.
+- **Delete User:**  
+  Hanya Admin yang memiliki akses untuk menghapus data pengguna.
 
-## Laravel Sponsors
+### 2. Medicine Management (Admin)
+- **List Medicines:** Menampilkan daftar obat yang tersedia di rumah sakit beserta status stoknya.
+- **Create Medicine:**  
+  Fields: Nama obat, deskripsi, tipe obat (keras/biasa), stok, gambar obat.  
+  Validation: Semua field wajib diisi dengan benar dan jenis obat harus dipilih.
+- **Edit Medicine:**  
+  Fields yang dapat diubah: Nama obat, deskripsi, tipe obat, stok, gambar obat.  
+  Validation: Data tidak boleh kosong dan validasi memastikan format yang benar.
+- **Delete Medicine:**  
+  Admin dapat menghapus obat yang sudah tidak digunakan atau stok habis.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 3. Medical Records Management (Dokter)
+- **List Medical Records:** Menampilkan riwayat penyakit dan rekam medis setiap pasien.
+- **Create Medical Record:**  
+  Fields: Pasien ID, Dokter ID, Obat ID (dapat lebih dari satu), tindakan medis, tanggal berobat.  
+  Validation: Semua data harus diisi dengan benar untuk setiap pasien.
+- **Edit Medical Record:**  
+  Fields yang dapat diubah: Pasien ID, Dokter ID, Obat ID, tindakan, tanggal berobat.  
+  Validation: Validasi untuk memastikan tidak ada data yang kosong.
+- **Delete Medical Record:**  
+  Dokter hanya bisa menghapus rekam medis yang dia buat sendiri.
 
-### Premium Partners
+## Layout Requirements:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 1. Login/Register Page
+- Login untuk Admin, Dokter, dan Pasien.
+- Register hanya untuk akun Pasien saja.
 
-## Contributing
+### 2. Dashboard
+- **Admin:**  
+  Menampilkan daftar dokter yang sedang bertugas hari itu.  
+  Tampilkan total pengguna dan perannya.
+- **Dokter:**  
+  Menampilkan 5 pasien terbaru yang telah diperiksa.  
+  Akses cepat ke rekam medis yang sedang diproses.
+- **Pasien:**  
+  Menampilkan tindakan medis dan obat yang diberikan dokter.  
+  Notifikasi otomatis untuk konsultasi lanjutan atau pengambilan obat.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. User List Page
+- **Admin:**  
+  Menampilkan seluruh pengguna dengan filter peran dan tanggal registrasi.
+- **Dokter:**  
+  Daftar pasien yang pernah ditangani dengan opsi pencarian.
 
-## Code of Conduct
+### 4. Medicine List Page
+- **Admin:**  
+  Menampilkan seluruh obat beserta status stok.  
+  Filter: Obat tersedia, tidak tersedia, atau kadaluarsa.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 5. Medical Records Page
+- **Dokter:**  
+  Akses ke seluruh riwayat medis pasien berdasarkan nama atau tanggal.
+- **Pasien:**  
+  Hanya bisa melihat rekam medis pribadi.
 
-## Security Vulnerabilities
+### 6. Profile Management Page
+Menampilkan data lengkap pengguna berdasarkan perannya.  
+Dokter dan Pasien bisa memperbarui informasi pribadi mereka.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Advanced Requirements (Optional Upgrades):
 
-## License
+1. **Appointment Scheduling System:**  
+   Pasien dapat melihat jadwal dokter dan memesan slot konsultasi.
+2. **Feedback System:**  
+   Ulasan dan rating dari pasien.
+3. **Filter dan Sorting Nama-Nama Dokter Untuk Dipilih Admin:**  
+   Tambahkan opsi pencarian dokter berdasarkan nama.
+4. **Filter dan Sorting Nama-Nama Obat:**  
+   Tambahkan opsi obat berdasarkan nama obatnya.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
